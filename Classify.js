@@ -76,13 +76,24 @@ var myClassifier = new Classifier({
 //When you classify a sentence, an array containing the classifications are returned. Hopefully it is only 1 element, but we will need
 //to handle cases where there are several.
 
-var messageFromFacebook='Whatever the message text is. This is an example variable. You WON"T use this';
+var messageFromFacebook = 'Whatever the message text is. This is an example variable. You WON"T use this';
 
 var classifiedMessage = myClassifier.Classify(messageFromFacebook);
 //We have several classifications and need clarification
 if (classifiedMessage.length > 1) {
     //maybe send a message saying I thought you were talking about A or B, what did you mean?
-} else if (classifiedMessage.length === 1) {
+    //You can do this through a loop like the one below
+    var reply = 'Are you asking about ';
+    for (var i = 0; i < classifiedMessage.length; i++) {
+        reply += classifiedMessage[i];
+        if (i + 1 < classifiedMessage)
+            reply + ' or ';
+        if (i + 1 === classifiedMessage.length)
+            reply + '. Please clarify :)'
+    }
+    //send message with text as our variable, reply
+}
+else if (classifiedMessage.length === 1) {
     var msg = classifiedMessage[0];
     if (msg == 'order') {
         //do something
@@ -117,4 +128,5 @@ console.log(myClassifier.Classify('Where is my order?'));
 //output: [ [ 'order-status' ] ]
 console.log(myClassifier.Classify('When will my order get here?'));
 //output: [ [ 'order-status' ] ]
-console.log(myClassifier.Classify('Where is the store and
+console.log(myClassifier.Classify('Where is the store and what are your hours?'));
+//output: [ [ 'store-hours' ], [ 'store-location' ] ]
