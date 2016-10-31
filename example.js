@@ -97,7 +97,7 @@ var myClassifier = new Classifier({
 });
 //Example of how to structure data in an object. Accessed like TAData['Toby']
 var TAData={
-    Toby: {phoneNumber:8594288629, email: 'tobydgosselin@gmail.com', nickname:'T-Bone'},
+    Toby: {phoneNumber:1258438237, email: 'DarthToby@mail.com', nickname:'T-Bone'},
     Jay : {phoneNumber: 1234567890, email: 'jayDaBest@AOL.com', nickname:'J-Dawg'},
     Robert: {phoneNumber: 1098765432, email: 'RobertCashMoney@money.net', nickname:'Cash-Money'}
 };
