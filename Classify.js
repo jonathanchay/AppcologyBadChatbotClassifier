@@ -17,7 +17,7 @@ Classifier.prototype = {
                 }
             }
         }
-        if (Object.keys(possibleClassifications).length< 1)
+        if (Object.keys(possibleClassifications).length < 1)
             return [];
         var tuples = [];
         for (var key in possibleClassifications) tuples.push([key, possibleClassifications[key]]);
@@ -54,28 +54,28 @@ Classifier.prototype = {
 //it's order-status, order, store-location, and store-hours. You need to be consistent.
 //These pairings are words that might show up in a sentence, and what the desired result might be
 var myClassifier = new Classifier({
-    'where':['order-status','store-location'],
-    'time':['order-status','store-hours'],
-    'here':['order-status'],
-    'when':['order-status','store-hours'],
-    'how':['order'],
-    'order':['order','order-status'],
-    'my':['order-status'],
-    'store':['store-hours','store-location'],
-    'located':['store-location'],
-    'location':['store-location'],
-    'hours':['store-hours'],
-    'open':['store-hours'],
-    'close':['store-hours'],
-    'closed':['store-hours'],
-    'place':['order'],
-    'want':['order']
+    'where': ['order-status', 'store-location'],
+    'time': ['order-status', 'store-hours'],
+    'here': ['order-status'],
+    'when': ['order-status', 'store-hours'],
+    'how': ['order'],
+    'order': ['order', 'order-status'],
+    'my': ['order-status'],
+    'store': ['store-hours', 'store-location'],
+    'located': ['store-location'],
+    'location': ['store-location'],
+    'hours': ['store-hours'],
+    'open': ['store-hours'],
+    'close': ['store-hours'],
+    'closed': ['store-hours'],
+    'place': ['order'],
+    'want': ['order']
 });
 
 //After you have initialized your classifier, in your chatbot you will need to classify the message before you can respond to it.
 //In Facebook's official bot starter kit, there is a section that looks like this:
 var message = 'some string';
-switch(message){
+switch (message) {
     case 'hi':
         //some action
         break;
@@ -89,31 +89,28 @@ switch(message){
 var classifiedMessage = myClassifier.Classify('Where is my pizza?');
 
 //We have several classifications and need clarification
-if(classifiedMessage.length>1){
+if (classifiedMessage.length > 1) {
     //maybe send a message saying I thought you were talking about A or B, what did you mean?
-}else{
-    if(classifiedMessage.length===1) {
-        switch (classifiedMessage[0]) {
-            case 'order':
-                //send a message with the link to ordering page!
-                break;
-            case 'store-hours':
-                //send a message with store hour info
-                break;
-            case 'store-location':
-                //send a message with store location info
-                break;
-            case 'order-status':
-                //send info about their order status
-                break;
-        }
+} else if (classifiedMessage.length === 1) {
+    var msg = classifiedMessage[0];
+    if (msg == 'order') {
+        //do something
     }
-    //No classification could be made
-    else{
-        //send a message saying you don't understand, maybe say what you can handle
+    if (msg == 'store-hours') {
+        //do something
+    }
+    if (msg == 'store-location') {
+        //do something
+    }
+    if (msg == 'order-status') {
+        //do something
     }
 }
+//No classification could be made
+else {
+    //send a message saying you don't understand, maybe say what you can handle
 
+}
 
 
 //Below are some examples of what is returned from queries.
@@ -129,5 +126,4 @@ console.log(myClassifier.Classify('Where is my order?'));
 //output: [ [ 'order-status' ] ]
 console.log(myClassifier.Classify('When will my order get here?'));
 //output: [ [ 'order-status' ] ]
-console.log(myClassifier.Classify('Where is the store and what are your hours?'));
-//output: [ [ 'store-hours' ], [ 'store-location' ] ]
+console.log(myClassifier.Classify('Where is the store and
