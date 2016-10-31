@@ -73,21 +73,12 @@ var myClassifier = new Classifier({
 });
 
 //After you have initialized your classifier, in your chatbot you will need to classify the message before you can respond to it.
-//In Facebook's official bot starter kit, there is a section that looks like this:
-var message = 'some string';
-switch (message) {
-    case 'hi':
-        //some action
-        break;
-    default:
-        //some action
-        break;
-}
 //When you classify a sentence, an array containing the classifications are returned. Hopefully it is only 1 element, but we will need
 //to handle cases where there are several.
 
-var classifiedMessage = myClassifier.Classify('Where is my pizza?');
+var messageFromFacebook='Whatever the message text is. This is an example variable. You WON"T use this';
 
+var classifiedMessage = myClassifier.Classify(messageFromFacebook);
 //We have several classifications and need clarification
 if (classifiedMessage.length > 1) {
     //maybe send a message saying I thought you were talking about A or B, what did you mean?
