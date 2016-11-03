@@ -101,10 +101,8 @@ var myClassifier = new Classifier({
     'sci-fi':['scifi']
 });
 
-//Structured Data.
-//Note, each medium(movie/game/book) has the same set of subcategories(horror,scifi, and fantasy) and each subcategory contains
-//A list of objects with a title property. Obviously you can add more properties depending on the need of your bot
-//NOTE: you do not have to have the same number of items in each list, but you must have all the same attributes
+//This is a great way you can structure your data into subcategories that you can easily acces.
+//NOTE: you do not have to have the same number of items in each list, but all must have the same attributes and at least one item
 // I.E. you MUST have horror, scifi, and fastasy for each genre, and each item in those lists MUST have a title property
 //They must share important traits so we can reliably access them later
 var data = {
